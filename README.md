@@ -1,4 +1,4 @@
-# [File Transfer System](https://github.com/jonatascbarroso/file-transfer-system/)
+# [File Transfer System (FTS)](https://github.com/jonatascbarroso/file-transfer-system/)
 
 File Transfer System is a distributed solution for transferring and processing files efficiently.
 
@@ -12,10 +12,9 @@ In the end, users use a service to get this processed file.
 
 ### Components
 
-* **Frontend App**: a graphical interface used by users to send and receive the files.
+* **Frontend App**: a graphical interface example used to send and receive files to FTS.
 * **Gateway**: a component to manage and protect the public API of the backend.
-* **File Transfer Service**: 
-* **Storage Service**: 
+* **File Transfer Service**: a service with methods to upload and download files to the system.
 * **Processor Service**: 
 * **Object Storage**: 
 * **Incoming Topic**: 
