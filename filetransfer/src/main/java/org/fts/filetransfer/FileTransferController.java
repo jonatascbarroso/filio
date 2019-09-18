@@ -38,6 +38,20 @@ public class FileTransferController {
     }
 
     /**
+     * 
+     * @param id the file id
+     * @return the file status
+     */
+    @GetMapping("status/{id:.+}")
+    @ResponseBody
+    public ResponseEntity<String> status(@PathVariable String id) {
+        LOGGER.debug("Getting the situation of file " + id + " by using the service instance " + this.instanceId);
+        String response = null;
+        // todo
+        return ResponseEntity.ok().body(response);
+    }
+
+    /**
      * Loads the resource if it exists, and sends it to the client
      * to download using a "Content-Disposition" response header.
      * @param id the file id
