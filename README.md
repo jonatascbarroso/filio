@@ -1,6 +1,3 @@
-# file-transfer-system
-File Transfer System is a distributed solution for transfering and processing files efficiently.
-
 # [File Transfer System](https://github.com/jonatascbarroso/file-transfer-system/)
 
 File Transfer System is a distributed solution for transferring and processing files efficiently.
