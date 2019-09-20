@@ -12,7 +12,11 @@
 	<artifactId>logging</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Logging</name>
-	<description>Logging Service</description>
+	<description>
+		The Logging Service logs all important system events,
+		e.g. API access, microservices communication,
+		errors, etc.
+	</description>
 
 	<properties>
 		<java.version>1.8</java.version>

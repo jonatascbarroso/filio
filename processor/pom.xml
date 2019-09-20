@@ -12,7 +12,10 @@
 	<artifactId>processor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Processor Service</name>
-	<description>Processor Service</description>
+	<description>
+		The Processor Service is a topic consumer that processes
+		each message in the Incoming Topic.
+	</description>
 
 	<properties>
 		<java.version>1.8</java.version>

@@ -12,19 +12,42 @@ In the end, users use a service to get this processed file.
 
 ### Components
 
-* **Frontend App**: a graphical interface example used to send and receive files to FTS.
-* **Gateway**: a component to manage and protect the public API of the backend.
-* **File Transfer Service**: a service with methods to upload and download files to the system.
-* **Processor Service**: 
-* **Object Storage**: 
-* **Incoming Topic**: 
-* **Admin Server**: 
-* **Logging**: 
+#### Frontend App
+
+Graphical interface used to send and receive files to the system.
+
+#### Gateway
+
+Component to manage and protect the public API of the backend using load balancer and circuit breaker.
+
+#### Admin Server
+
+Discovery and management service of the system microservices.
+
+#### File Transfer Service
+
+Component with methods to upload, download, check, and get info of the managed files.
+
+#### Incoming Topic
+
+Message repository to indicate to system process an uploaded file.
+
+#### Object Storage
+
+Container to stock temporary and processed files by the system.
+
+#### Processor Service
+
+Topic consumer that processes each message in the Incoming Topic.
+
+#### Logging
+
+Logs all important system events, e.g. API access, microservices communication, errors, etc.
 
 ### Technologies
 
 * Front-end: [React](https://reactjs.org/)
-* Microservices: [Spring Boot](https://spring.io/projects/spring-boot)
+* Back-end (microservices): [Spring Boot](https://spring.io/projects/spring-boot)
 * Messaging: [Apache Kafka](https://kafka.apache.org/)
 * Object Storage: [MinIO](https://min.io/)
 
@@ -35,8 +58,10 @@ In the end, users use a service to get this processed file.
 
 ## Running
 
-### Admin Server and Service Discovery
+### Administration Server and Service Discovery
+
 ```
 cd admin
 mvn clean package spring-boot:run
 ```
+

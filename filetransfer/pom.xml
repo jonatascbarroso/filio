@@ -12,7 +12,10 @@
 	<artifactId>filetransfer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>File Transfer Service</name>
-	<description>File Transfer Service</description>
+	<description>
+		The File Transfer Service is a component with methods to upload,
+		download, check, and get info of the managed files.
+	</description>
 
 	<properties>
 		<java.version>1.8</java.version>

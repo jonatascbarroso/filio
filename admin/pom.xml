@@ -12,7 +12,10 @@
 	<artifactId>admin</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Admin Server</name>
-	<description>Administration Server with Eureka Service Discovery</description>
+	<description>
+		The Administration Server is a discovery and management
+		service of the system microservices.
+	</description>
 
 	<properties>
 		<java.version>1.8</java.version>
