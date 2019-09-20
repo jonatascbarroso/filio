@@ -1,4 +1,4 @@
-package org.fts.logging;
+package org.filio.logging;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

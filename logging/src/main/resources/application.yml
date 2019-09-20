@@ -28,4 +28,4 @@ management:
 
 logging:
   level:
-    org.fts: DEBUG
+    org.filio: DEBUG
