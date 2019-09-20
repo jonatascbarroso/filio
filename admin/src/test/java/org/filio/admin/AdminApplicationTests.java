@@ -1,4 +1,4 @@
-package org.fts.admin;
+package org.filio.admin;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

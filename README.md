@@ -1,6 +1,6 @@
-# [File Transfer System (FTS)](https://github.com/jonatascbarroso/file-transfer-system/)
+# [Filio](https://github.com/jonatascbarroso/filio/)
 
-File Transfer System is a distributed solution for transferring and processing files efficiently.
+**Filio**, *son* in Latin and *FILe In Out* in English, is a distributed solution for transferring and processing files efficiently.
 
 Briefly, the system receives a file, saves in object storage and notifies a messaging topic to be processed.
 After upload, the file is read, processed, and stored to stay available for download.
@@ -8,7 +8,7 @@ In the end, users use a service to get this processed file.
 
 ## Architecture
 
-![Architecture](docs/file-transfer-system-architecture.png)
+![Architecture](docs/filio-architecture.png)
 
 ### Components
 

@@ -1,4 +1,4 @@
-package org.fts.admin;
+package org.filio.admin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
