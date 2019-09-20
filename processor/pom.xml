@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.fts</groupId>
-	<artifactId>filetransfer</artifactId>
+	<artifactId>processor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>File Transfer Service</name>
-	<description>File Transfer Service</description>
+	<name>Processor Service</name>
+	<description>Processor Service</description>
 
 	<properties>
 		<java.version>1.8</java.version>

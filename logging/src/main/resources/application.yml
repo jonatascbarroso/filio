@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: ${PORT:0}
 
 eureka:
   client:
@@ -12,15 +12,11 @@ eureka:
   instance:
     leaseRenewalIntervalInSeconds: 5
     leaseExpirationDurationInSeconds: 2
+    instanceId: ${spring.application.name}:{$spring.application.instance_id:${random.value}}
 
 spring:
   application:
-    name: gateway
-
-serviceDiscovery:
-  fileTransfer:
-    name: File Transfer Service
-    url: http://file-transfer
+    name: logging
 
 management:
   security:

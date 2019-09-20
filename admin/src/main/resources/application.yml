@@ -22,3 +22,7 @@ spring:
   boot:
     admin:
       context-path: /admin
+
+logging:
+  level:
+    org.fts: DEBUG  

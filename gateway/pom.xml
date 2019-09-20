@@ -11,8 +11,8 @@
 	<groupId>org.fts</groupId>
 	<artifactId>gateway</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>gateway</name>
-	<description>API Gateway with load balancer and circuit breaker</description>
+	<name>API Gateway</name>
+	<description>API Gateway with Load Balancer and Circuit Breaker (Hystrix)</description>
 
 	<properties>
 		<java.version>1.8</java.version>

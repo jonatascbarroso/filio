@@ -11,8 +11,8 @@
 	<groupId>org.fts</groupId>
 	<artifactId>admin</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>admin</name>
-	<description>Administration Server</description>
+	<name>Admin Server</name>
+	<description>Administration Server with Eureka Service Discovery</description>
 
 	<properties>
 		<java.version>1.8</java.version>
