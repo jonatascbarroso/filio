@@ -1,6 +1,6 @@
-package org.fts.filetransfer;
+package org.filio.filetransfer;
 
-import org.fts.storage.ObjectStorageService;
+import org.filio.storage.ObjectStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;

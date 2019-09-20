@@ -1,4 +1,4 @@
-package org.fts.filetransfer;
+package org.filio.filetransfer;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
