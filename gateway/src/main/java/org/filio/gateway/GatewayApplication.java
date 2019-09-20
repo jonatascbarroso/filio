@@ -1,4 +1,4 @@
-package org.fts.gateway;
+package org.filio.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

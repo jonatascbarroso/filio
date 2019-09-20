@@ -1,4 +1,4 @@
-package org.fts.gateway;
+package org.filio.gateway;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,4 +1,4 @@
-package org.fts.gateway;
+package org.filio.gateway;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
