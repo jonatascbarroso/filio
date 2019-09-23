@@ -1,4 +1,4 @@
-package org.filio.storage;
+package org.filio.exception;
 
 /**
  * This exception is used to indicate when
@@ -6,7 +6,7 @@ package org.filio.storage;
  */
 public class ObjectNotFoundException extends RuntimeException {
 
-    private static final long serialVersionUID = -5110423958223833545L;
+    private static final long serialVersionUID = 1L;
 
     public ObjectNotFoundException(String id) {
         super("Could not find object " + id);
