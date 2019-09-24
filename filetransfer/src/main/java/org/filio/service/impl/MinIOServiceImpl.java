@@ -4,9 +4,9 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 import org.apache.http.entity.ContentType;
-import org.fts.exception.ObjectNotFoundException;
-import org.fts.exception.ServiceException;
-import org.fts.service.ObjectStorageService;
+import org.filio.exception.ObjectNotFoundException;
+import org.filio.exception.ServiceException;
+import org.filio.service.ObjectStorageService;
 import org.springframework.beans.factory.annotation.Value;
 
 import io.minio.MinioClient;
@@ -39,8 +39,8 @@ public class MinIOServiceImpl implements ObjectStorageService {
         log.debug("Creating a client to access the MinIO");
         try {
             MinioClient minioClient = new MinioClient(serverName, serverPort, accessKey, secretKey);
-            boolean isExist = minioClient.bucketExists(bucketName);
-            if (isExist) {
+            boolean isBucketExist = minioClient.bucketExists(bucketName);
+            if (isBucketExist) {
                 log.debug("Bucket already exists; using it");
             } else {
                 log.debug("Creating a bucket");
