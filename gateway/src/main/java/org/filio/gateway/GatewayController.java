@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @Slf4j
 public class GatewayController {
-    
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -30,9 +30,9 @@ public class GatewayController {
     @GetMapping("/")
     @HystrixCommand(fallbackMethod = "fallbackFileTransferService")
     public String upload() {
-        String response = restTemplate.exchange(FILE_TRANSFER_SERVICE_URL,
-            HttpMethod.GET, null, new ParameterizedTypeReference<String>() {},
-            String.class).getBody();
+        String response = restTemplate
+                .exchange(FILE_TRANSFER_SERVICE_URL, HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
+                }, String.class).getBody();
         return FILE_TRANSFER_SERVICE_NAME + " Instance: " + response;
     }
 
