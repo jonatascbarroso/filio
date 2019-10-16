@@ -3,6 +3,7 @@ package org.filio.filetransfer;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.UUID;
 
 import com.google.gson.Gson;
 
@@ -45,12 +46,13 @@ public class FileTransferController {
      * @return the file id
      * @throws IOException
      */
-    @PostMapping("/")
+    @PostMapping("/files")
     @ResponseBody
     public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file) throws IOException {
         log.debug("Uploading file to service instance " + this.instanceId);
         InputStream content = new BufferedInputStream(file.getInputStream());
-        String id = storage.putObject(content);
+        String id = UUID.randomUUID().toString();
+        storage.putObject(id, content);
         content.close();
         String response = new Gson().toJson(id);
         return ResponseEntity.ok().body(response);

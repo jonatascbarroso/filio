@@ -1,7 +1,6 @@
 package org.filio.service.impl;
 
 import java.io.InputStream;
-import java.util.UUID;
 
 import org.apache.http.entity.ContentType;
 import org.filio.entity.StoredObject;
@@ -76,11 +75,10 @@ public class MinIOServiceImpl implements ObjectStorageService {
     }
 
     @Override
-    public String putObject(InputStream content) {
+    public String putObject(String id, InputStream content) {
         log.debug("Sending an object to MinIO");
         try {
             Long size = Long.valueOf(content.available());
-            String id = UUID.randomUUID().toString();
             getMinioClient().putObject(bucketName, id, content, size, null, null, ContentType.APPLICATION_OCTET_STREAM.toString());
             return id;
         } catch (Exception e) {

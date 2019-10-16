@@ -9,7 +9,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 /**
- * This error handler intercept excpetions
+ * This error handler intercept exceptions
  * from controllers accross the application.
  */
 @RestControllerAdvice

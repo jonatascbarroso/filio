@@ -10,21 +10,21 @@ public interface ObjectStorageService {
     /**
      * Send an object.
      */
-    String putObject(InputStream content);
+    public abstract String putObject(String id, InputStream content);
 
     /**
      * Get an object.
      */
-    InputStream getObject(String id);
+    public abstract InputStream getObject(String id);
 
     /**
      * Check if an object exists.
      */
-    void check(String id);
+    public abstract void check(String id);
 
     /**
      * Get the object info.
      */
-    String info(String id);
+    public abstract String info(String id);
 
 }
