@@ -7,12 +7,24 @@ import java.io.InputStream;
  */
 public interface ObjectStorageService {
     
-    void putObject(InputStream content, String name);
+    /**
+     * Send an object.
+     */
+    String putObject(InputStream content);
 
-    InputStream getObject(String name);
+    /**
+     * Get an object.
+     */
+    InputStream getObject(String id);
 
-    void check(String name);
+    /**
+     * Check if an object exists.
+     */
+    void check(String id);
 
-    String info(String name);
+    /**
+     * Get the object info.
+     */
+    String info(String id);
 
 }

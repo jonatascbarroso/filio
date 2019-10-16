@@ -29,7 +29,7 @@ public class GatewayController {
 
     @GetMapping("/")
     @HystrixCommand(fallbackMethod = "fallbackFileTransferService")
-    public String upload() {
+    public String download() {
         String response = restTemplate
                 .exchange(FILE_TRANSFER_SERVICE_URL, HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
                 }, String.class).getBody();
