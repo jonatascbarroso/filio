@@ -7,8 +7,6 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
     healthcheck:
       enabled: true
-    lease:
-      duration: 5
   instance:
     leaseRenewalIntervalInSeconds: 5
     leaseExpirationDurationInSeconds: 2
@@ -19,12 +17,17 @@ spring:
     name: file-transfer
 
 management:
-  security:
-    enabled: false
   endpoints:
     web:
       exposure:
         include: "*"
+
+minio:
+  serverName: http://localhost
+  serverPort: 9000
+  accessKey: my-access-key
+  secretKey: my-secret-key
+  bucketName: my-bucket
 
 logging:
   level:

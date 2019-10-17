@@ -7,9 +7,9 @@ import java.util.UUID;
 
 import com.google.gson.Gson;
 
-import org.filio.exception.ObjectNotFoundException;
-import org.filio.exception.ServiceException;
-import org.filio.service.ObjectStorageService;
+import org.filio.filetransfer.exception.ObjectNotFoundException;
+import org.filio.filetransfer.exception.ServiceException;
+import org.filio.filetransfer.service.implementation.MinIOService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
@@ -36,7 +36,7 @@ public class FileTransferController {
     private String instanceId;
 
     @Autowired
-    private ObjectStorageService storage;
+    private MinIOService storage;
 
     /**
      * Is geared to handle multi-part message file and give it to the Storage

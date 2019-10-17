@@ -1,4 +1,4 @@
-package org.filio.exception;
+package org.filio.filetransfer.exception;
 
 import java.util.Collection;
 

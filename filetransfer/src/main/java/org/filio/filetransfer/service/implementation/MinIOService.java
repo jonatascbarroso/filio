@@ -1,12 +1,12 @@
-package org.filio.service.impl;
+package org.filio.filetransfer.service.implementation;
 
 import java.io.InputStream;
 
 import org.apache.http.entity.ContentType;
-import org.filio.entity.StoredObject;
-import org.filio.exception.ObjectNotFoundException;
-import org.filio.exception.ServiceException;
-import org.filio.service.ObjectStorageService;
+import org.filio.filetransfer.entity.StoredObject;
+import org.filio.filetransfer.exception.ObjectNotFoundException;
+import org.filio.filetransfer.exception.ServiceException;
+import org.filio.filetransfer.service.ObjectStorageService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Service
 @Slf4j
-public class MinIOServiceImpl implements ObjectStorageService {
+public class MinIOService implements ObjectStorageService {
 
     private final String SERVICE_NAME = "MinIO";
 
@@ -36,7 +36,7 @@ public class MinIOServiceImpl implements ObjectStorageService {
     @Value("${minio.secretKey}")
     private String secretKey;
 
-    @Value("${minio.bucket}")
+    @Value("${minio.bucketName}")
     private String bucketName;
 
     private MinioClient minioClient;

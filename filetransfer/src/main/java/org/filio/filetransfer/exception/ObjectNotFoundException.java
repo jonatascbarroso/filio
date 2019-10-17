@@ -1,4 +1,4 @@
-package org.filio.exception;
+package org.filio.filetransfer.exception;
 
 /**
  * This exception is used to indicate when

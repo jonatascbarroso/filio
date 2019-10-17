@@ -1,4 +1,4 @@
-package org.filio.entity;
+package org.filio.filetransfer.entity;
 
 import java.io.InputStream;
 import java.util.Date;

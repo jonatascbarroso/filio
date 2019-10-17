@@ -1,14 +1,17 @@
 package org.filio.gateway;
 
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
+
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
-import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.http.HttpMethod;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -27,12 +30,13 @@ public class GatewayController {
     @Value("${serviceDiscovery.fileTransfer.url}")
     private String FILE_TRANSFER_SERVICE_URL;
 
-    @GetMapping("/")
+    @GetMapping("/{id}")
     @HystrixCommand(fallbackMethod = "fallbackFileTransferService")
-    public String download() {
-        String response = restTemplate
-                .exchange(FILE_TRANSFER_SERVICE_URL, HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
-                }, String.class).getBody();
+    public String download(@PathVariable String id) {
+        String path = FILE_TRANSFER_SERVICE_URL + "/files/{id}";
+        Map<String, String> uriVariables = new HashMap();
+        uriVariables.put("id", id);
+        String response = restTemplate.getForObject(path, InputStream.class, uriVariables);
         return FILE_TRANSFER_SERVICE_NAME + " Instance: " + response;
     }
 
@@ -43,8 +47,7 @@ public class GatewayController {
     }
 
     private String createFallbackMessage(String serviceName) {
-        String message = "Fallback response: " + serviceName + " is not available.";
-        return message;
+        return "Fallback response: " + serviceName + " is not available.";
     }
 
     @Bean

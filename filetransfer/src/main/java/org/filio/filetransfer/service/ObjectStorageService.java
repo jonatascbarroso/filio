@@ -1,4 +1,4 @@
-package org.filio.service;
+package org.filio.filetransfer.service;
 
 import java.io.InputStream;
 
