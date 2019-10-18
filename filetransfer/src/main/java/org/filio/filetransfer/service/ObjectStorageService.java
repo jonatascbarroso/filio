@@ -10,7 +10,7 @@ public interface ObjectStorageService {
     /**
      * Send an object.
      */
-    public abstract String putObject(String id, InputStream content);
+    public abstract void putObject(String id, InputStream content);
 
     /**
      * Get an object.

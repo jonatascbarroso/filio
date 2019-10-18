@@ -75,12 +75,11 @@ public class MinIOService implements ObjectStorageService {
     }
 
     @Override
-    public String putObject(String id, InputStream content) {
+    public void putObject(String id, InputStream content) {
         log.debug("Sending an object to MinIO");
         try {
             Long size = Long.valueOf(content.available());
             getMinioClient().putObject(bucketName, id, content, size, null, null, ContentType.APPLICATION_OCTET_STREAM.toString());
-            return id;
         } catch (Exception e) {
             log.error("An error has occurred trying to send an object to MinIO.", e);
             throw new ServiceException(SERVICE_NAME);
