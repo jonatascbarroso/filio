@@ -1,5 +1,8 @@
 package org.filio.gateway;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -28,10 +32,12 @@ public class GatewayController {
     @Value("${serviceDiscovery.fileTransfer.url}")
     private String FILE_TRANSFER_SERVICE_URL;
 
-    @GetMapping("/{id}")
+    @GetMapping("/files/{id}")
     @HystrixCommand(fallbackMethod = "fallbackFileTransferService")
     public String download(@PathVariable String id) {
-        String path = FILE_TRANSFER_SERVICE_URL + "/files/";
+        WebClient client = WebClient.builder().baseUrl(FILE_TRANSFER_SERVICE_URL).build();
+        client.get().uri("/files/{id}", id).exchange().;
+
         String response = restTemplate
                 .exchange(path, HttpMethod.GET, null, new ParameterizedTypeReference<String>() {
                 }, id).getBody();

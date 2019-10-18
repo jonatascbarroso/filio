@@ -4,6 +4,7 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import com.google.gson.Gson;
 
@@ -14,21 +15,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.buffer.DataBuffer;
+import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.codec.multipart.FilePart;
+import org.springframework.http.codec.multipart.Part;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.extern.slf4j.Slf4j;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @RestController
+@RequestMapping(path = "/api/files")
 @Slf4j
 public class FileTransferController {
 
@@ -39,23 +51,34 @@ public class FileTransferController {
     private MinIOService storage;
 
     /**
-     * Is geared to handle multi-part message file and give it to the Storage
-     * Service for saving.
+     * Is geared to handle multi-part file and give it to the
+     * Storage Service for saving.
      * 
-     * @param file multiparted
-     * @return the file id
-     * @throws IOException
+     * @param parts of a flux providing all part contained in the request
+     * @return a flux of results - the file id
      */
-    @PostMapping("/files")
-    @ResponseBody
-    public ResponseEntity<String> upload(@RequestParam("file") MultipartFile file) throws IOException {
+    @RequestMapping(method = RequestMethod.POST,
+        consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
+        produces = MediaType.APPLICATION_JSON_VALUE)
+    public Flux<String> upload(@RequestBody Flux<Part> parts) {
         log.debug("Uploading file to service instance " + this.instanceId);
-        InputStream content = new BufferedInputStream(file.getInputStream());
-        String id = UUID.randomUUID().toString();
-        storage.putObject(id, content);
-        content.close();
-        String response = new Gson().toJson(id);
-        return ResponseEntity.ok().body(response);
+        return parts
+            .filter(part -> part instanceof FilePart)
+            .ofType(FilePart.class)
+            .flatMap(this::saveFile);
+    }
+
+    private Mono<String> saveFile(FilePart part) {
+        return DataBufferUtils.join(part.content()).map(dataBuffer -> {
+            String id = UUID.randomUUID().toString();
+            InputStream content = dataBuffer.asInputStream();
+            storage.putObject(id, content);
+            try {
+                content.close();
+            } catch (IOException e) {
+            }
+            return new Gson().toJson(id);
+        });
     }
 
     /**
