@@ -1,0 +1,31 @@
+server:
+  port: ${PORT:0}
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+    lease:
+      duration: 5
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 2
+    instanceId: ${spring.application.name}:{$spring.application.instance_id:${random.value}}
+
+spring:
+  application:
+    name: logging
+
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+logging:
+  level:
+    org.filio: DEBUG
