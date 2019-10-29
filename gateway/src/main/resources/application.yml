@@ -1,26 +1,21 @@
 server:
-  port: 8080
+  port: 8881
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-    healthcheck:
-      enabled: true
-    lease:
-      duration: 5
-  instance:
-    leaseRenewalIntervalInSeconds: 5
-    leaseExpirationDurationInSeconds: 2
+loadBalancer:
+  fileTransfer:
+    name: File Transfer Service
+    url: http://localhost:8001
 
 spring:
   application:
     name: gateway
-
-serviceDiscovery:
-  fileTransfer:
-    name: File Transfer Service
-    url: http://file-transfer
+  cloud:
+    config:
+      uri: ${CONFIG_SERVER_URL:http://localhost:9000}
+  boot:
+    admin:
+      client:
+        url: http://localhost:9001
 
 management:
   security:
