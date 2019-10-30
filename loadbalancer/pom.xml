@@ -9,13 +9,12 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>org.filio</groupId>
-	<artifactId>gateway</artifactId>
+	<artifactId>loadbalancer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>API Gateway</name>
+	<name>Load Balancer</name>
 	<description>
-		The API Gateway is a component to manage and protect
-		the public API of the backend using load balancer
-		and circuit breaker.
+		The Load Balancer is a component responsible for
+		distributing requests across service instances.
 	</description>
 
 	<properties>
@@ -29,33 +28,17 @@
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-webflux</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+			<version>2.1.6</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
         	<artifactId>lombok</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.projectreactor</groupId>
-			<artifactId>reactor-spring</artifactId>
-			<version>1.0.1.RELEASE</version>
 		</dependency>
 
 		<dependency>

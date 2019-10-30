@@ -1,4 +1,4 @@
-package org.filio.gateway;
+package org.filio.loadbalancer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @Slf4j
-public class GatewayController {
+public class Controller {
 
     @Autowired
     private RestTemplate restTemplate;

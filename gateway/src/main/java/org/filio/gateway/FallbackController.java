@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class FallbackController {
 
-    @Value("${loadBalancer.fileTransfer.name}")
+    @Value("${services.fileTransfer.name}")
     private String FILE_TRANSFER_SERVICE_NAME;
 
     @RequestMapping("/fallbackFileTransferService")
@@ -22,7 +22,7 @@ public class FallbackController {
     }
 
     private String createFallbackMessage(String serviceName) {
-        return "Fallback response: " + serviceName + " is not available.";
+        return "Fallback response: " + serviceName + " Service is not available.";
     }
 
 }

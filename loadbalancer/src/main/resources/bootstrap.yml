@@ -1,9 +1,10 @@
 spring:
   application:
-    name: admin
+    name: load-balancer
   boot:
     admin:
-      context-path: /
+      client:
+        url: http://localhost:9001
   cloud:
     config:
       uri: ${CONFIG_SERVER_URL:http://localhost:9000}

@@ -1,22 +1,6 @@
 server:
   port: 8881
 
-loadBalancer:
-  fileTransfer:
-    name: File Transfer Service
-    url: http://localhost:8001
-
-spring:
-  application:
-    name: gateway
-  cloud:
-    config:
-      uri: ${CONFIG_SERVER_URL:http://localhost:9000}
-  boot:
-    admin:
-      client:
-        url: http://localhost:9001
-
 management:
   security:
     enabled: false
@@ -28,3 +12,9 @@ management:
 logging:
   level:
     org.filio: DEBUG
+
+services:
+  fileTransfer:
+    name: File Transfer
+    url: http://localhost:8001
+    resourceName: files

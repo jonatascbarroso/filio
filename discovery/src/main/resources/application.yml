@@ -12,17 +12,6 @@ eureka:
     healthcheck:
       enabled: true
 
-spring:
-  application:
-    name: discovery
-  cloud:
-    config:
-      uri: ${CONFIG_SERVER_URL:http://localhost:9000}
-  boot:
-    admin:
-      client:
-        url: http://localhost:9001
-
 management:
   security:
     enabled: false

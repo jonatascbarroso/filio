@@ -9,11 +9,6 @@ management:
       exposure:
         include: "*"
 
-spring:
-  boot:
-    admin:
-      context-path: /
-
 logging:
   level:
     org.filio: DEBUG  
