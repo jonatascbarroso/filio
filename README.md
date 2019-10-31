@@ -63,6 +63,8 @@ Logs all important system events, e.g. API access, microservices communication, 
 
 ### MinIO
 
+1. Download MinIO.
+2. Start MinIO server.
 ```
 minio server .
 ```
@@ -81,10 +83,10 @@ mongo localhost:27017
 ```
 5. Create an administrator user.
 ```
-use admin
-db.createUser({user: "root", pwd: "root", roles:["root"]})
+> use admin
+> db.createUser({user: "root", pwd: "root", roles:["root"]})
 ```
-6. Restart MongoDB Server and enable authentication with --auth flag.
+6. Restart MongoDB server and enable authentication with --auth flag.
 ```
 mongod --auth --port 27017 --dbpath ./mongodb-data
 ```
@@ -94,8 +96,8 @@ mongo localhost:27017 -u "root" -p "root" --authenticationDatabase "admin"
 ```
 8. Create a app user to `filio` db.
 ```
-use filio
-db.createUser({user: "user", pwd: "password", roles:["dbOwner"]})
+> use filio
+> db.createUser({user: "user", pwd: "password", roles:["dbOwner"]})
 ```
 9. Reconnect with new user credentials.
 ```
