@@ -50,13 +50,57 @@ Logs all important system events, e.g. API access, microservices communication, 
 * Back-end (microservices): [Spring Boot](https://spring.io/projects/spring-boot)
 * Messaging: [Apache Kafka](https://kafka.apache.org/)
 * Object Storage: [MinIO](https://min.io/)
+* Database: [MongoDB](https://www.mongodb.com)
 
 ### Prerequisites
 
 * Maven 3
 * Java 8
+* MinIO
+* MongoDB
 
 ## Running
+
+### MinIO
+
+```
+minio server .
+```
+
+### MongoDB
+
+1. Download and install MongoDB.
+2. Create a folder to put your data: `mongodb-data`.
+3. Start MongoDB server.
+```
+mongod --port 27017 --dbpath ./mongodb-data
+```
+4. Connect to server.
+```
+mongo localhost:27017
+```
+5. Create an administrator user.
+```
+use admin
+db.createUser({user: "root", pwd: "root", roles:["root"]})
+```
+6. Restart MongoDB Server and enable authentication with --auth flag.
+```
+mongod --auth --port 27017 --dbpath ./mongodb-data
+```
+7. Connect to it as administrator.
+```
+mongo localhost:27017 -u "root" -p "root" --authenticationDatabase "admin"
+```
+8. Create a app user to `filio` db.
+```
+use filio
+db.createUser({user: "user", pwd: "password", roles:["dbOwner"]})
+```
+9. Reconnect with new user credentials.
+```
+mongo localhost:27017/filio -u "user" -p "password"
+```
 
 ### Administration Server and Service Discovery
 
