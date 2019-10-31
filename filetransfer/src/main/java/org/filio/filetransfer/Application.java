@@ -6,10 +6,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class FileTransferApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FileTransferApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 
 }

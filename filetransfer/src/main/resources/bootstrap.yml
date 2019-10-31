@@ -1,6 +1,6 @@
 spring:
   application:
-    name: load-balancer
+    name: file-transfer
   boot:
     admin:
       client:
@@ -13,3 +13,10 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:9002/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 2
+    instanceId: ${spring.application.name}:{$spring.application.instance_id:${random.value}}
+

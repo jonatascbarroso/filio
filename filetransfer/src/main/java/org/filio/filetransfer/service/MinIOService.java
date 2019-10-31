@@ -1,17 +1,13 @@
-package org.filio.filetransfer.service.implementation;
+package org.filio.filetransfer.service;
 
 import java.io.InputStream;
 
-import org.apache.http.entity.ContentType;
 import org.filio.filetransfer.entity.StoredObject;
-import org.filio.filetransfer.exception.ObjectNotFoundException;
 import org.filio.filetransfer.exception.ServiceException;
-import org.filio.filetransfer.service.ObjectStorageService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import io.minio.MinioClient;
-import io.minio.ObjectStat;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -20,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Service
 @Slf4j
-public class MinIOService implements ObjectStorageService {
+public class MinIOService {
 
     private final String SERVICE_NAME = "MinIO";
 
@@ -74,58 +70,26 @@ public class MinIOService implements ObjectStorageService {
         return minioClient;
     }
 
-    @Override
-    public void putObject(String id, InputStream content) {
+    public void putObject(StoredObject object) {
         log.debug("Sending an object to MinIO");
         try {
-            Long size = Long.valueOf(content.available());
-            getMinioClient().putObject(bucketName, id, content, size, null, null, ContentType.APPLICATION_OCTET_STREAM.toString());
+            getMinioClient().putObject(bucketName,
+                object.getId(), object.getContent(), object.getLength(),
+                null, null, object.getContentType());
         } catch (Exception e) {
             log.error("An error has occurred trying to send an object to MinIO.", e);
             throw new ServiceException(SERVICE_NAME);
         }
     }
 
-    @Override
-    public InputStream getObject(String id) throws ObjectNotFoundException {
+    public InputStream getObject(String id) {
         log.debug("Getting an object from MinIO");
         try {
-            InputStream content = getMinioClient().getObject(bucketName, id);
-            return content;
+            return getMinioClient().getObject(bucketName, id);
         } catch (Exception e) {
             log.error("An error has occurred trying to get a MinIO object.", e);
             throw new ServiceException(SERVICE_NAME);
         }
-    }
-
-    @Override
-    public void check(String id) throws ObjectNotFoundException {
-        log.debug("Checking if an object exists on MinIO");
-        try {
-            ObjectStat stat = getMinioClient().statObject(bucketName, id);
-            if (stat == null) {
-                throw new ObjectNotFoundException(id);
-            }
-        } catch (Exception e) {
-            log.error("An error has occurred trying to check if a MinIO object exists.", e);
-            throw new ServiceException(SERVICE_NAME);
-        }
-    }
-
-    @Override
-    public String info(String id) throws ObjectNotFoundException {
-        log.debug("Getting the object info from MinIO, but without content");
-        StoredObject storedObject = new StoredObject();
-        try {
-            ObjectStat stat = getMinioClient().statObject(bucketName, id);
-            storedObject.setId(stat.name());
-            storedObject.setCreatedTime(stat.createdTime());
-            storedObject.setLength(stat.length());
-        } catch (Exception e) {
-            log.error("An error has occurred trying to get a Minio object info.", e);
-            throw new ServiceException(SERVICE_NAME);
-        }
-        return storedObject.json();
     }
 
 }

@@ -1,35 +1,30 @@
 server:
   port: ${PORT:0}
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
-    healthcheck:
-      enabled: true
-  instance:
-    leaseRenewalIntervalInSeconds: 5
-    leaseExpirationDurationInSeconds: 2
-    instanceId: ${spring.application.name}:{$spring.application.instance_id:${random.value}}
-
-spring:
-  application:
-    name: file-transfer
-
 management:
+  security:
+    enabled: false
   endpoints:
     web:
       exposure:
         include: "*"
 
+logging:
+  level:
+    org.filio: DEBUG
+
 minio:
   serverName: http://localhost
   serverPort: 9000
-  accessKey: my-access-key
-  secretKey: my-secret-key
+  accessKey: 5J0MM2M0NXG1UQB37P1W
+  secretKey: bFqGV6nKrgFahJxOJZu81tOPMzkd1rqLzOe2c0ao
   bucketName: my-bucket
 
-logging:
-  level:
-    org.filio: DEBUG  
-
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      username: user
+      password: password
+      database: filio

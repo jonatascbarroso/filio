@@ -29,4 +29,11 @@ public class ControllerErrorHandler extends ResponseEntityExceptionHandler {
             exception.getMessage()), new HttpHeaders(), httpStatus, request);
     }
 
+    @ExceptionHandler
+    public ResponseEntity<Object> handleFileAccessException(final FileAccessException exception, final WebRequest request) {
+        HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
+        return handleExceptionInternal(exception, ErrorResponse.of(httpStatus.value(),
+            exception.getMessage()), new HttpHeaders(), httpStatus, request);
+    }
+
 }

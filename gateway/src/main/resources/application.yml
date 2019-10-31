@@ -13,7 +13,7 @@ logging:
   level:
     org.filio: DEBUG
 
-services:
+loadBalancer:
   fileTransfer:
     name: File Transfer
     url: http://localhost:8001

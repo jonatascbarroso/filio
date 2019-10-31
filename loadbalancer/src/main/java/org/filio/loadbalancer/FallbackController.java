@@ -1,4 +1,4 @@
-package org.filio.gateway;
+package org.filio.loadbalancer;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,18 +11,18 @@ import reactor.core.publisher.Mono;
 @Slf4j
 public class FallbackController {
 
-    @Value("${loadBalancer.fileTransfer.name}")
-    private String FILE_TRANSFER_NAME;
+    @Value("${service.name}")
+    private String SERVICE_NAME;
 
-    @RequestMapping("/fallbackFileTransfer")
+    @RequestMapping("/fallback")
     public Mono<String> fallbackFileTransfer() {
-        String message = createFallbackMessage(FILE_TRANSFER_NAME);
+        String message = createFallbackMessage(SERVICE_NAME);
         log.error(message);
         return Mono.just(message);
     }
 
     private String createFallbackMessage(String serviceName) {
-        return "Fallback response: " + serviceName + " Load Balancer is not available.";
+        return "Fallback response: " + serviceName + " Services are not available.";
     }
 
 }

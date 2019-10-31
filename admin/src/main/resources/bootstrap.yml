@@ -6,4 +6,4 @@ spring:
       context-path: /
   cloud:
     config:
-      uri: ${CONFIG_SERVER_URL:http://localhost:9000}
+      uri: ${CONFIG_SERVER_URL:http://localhost:9003}

@@ -7,4 +7,4 @@ spring:
         url: http://localhost:9001
   cloud:
     config:
-      uri: ${CONFIG_SERVER_URL:http://localhost:9000}
+      uri: ${CONFIG_SERVER_URL:http://localhost:9003}

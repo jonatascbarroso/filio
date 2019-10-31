@@ -1,0 +1,12 @@
+server:
+  port: 9003
+
+spring:
+  application:
+    name: config
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        bootstrap: true

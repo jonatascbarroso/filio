@@ -2,7 +2,7 @@ package org.filio.filetransfer.exception;
 
 /**
  * This exception is used to indicate when
- * an employee is looked up but not found.
+ * an object is looked up but not found.
  */
 public class ObjectNotFoundException extends RuntimeException {
 
