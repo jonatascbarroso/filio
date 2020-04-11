@@ -1,8 +1,8 @@
 spring:
   security:
     user:
-      name: admin-server-user
-      password: admin-server-password
+      name: admin-server-user2
+      password: admin-server-password2
   boot:
     admin:
       client:
@@ -11,4 +11,4 @@ spring:
 
 logging:
   level:
-    org.filio: DEBUG  
+    org.filio: DEBUG

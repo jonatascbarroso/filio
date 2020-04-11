@@ -7,8 +7,8 @@ spring:
     admin:
       client:
         url: http://localhost:9001
-        username: admin-server-user
-        password: admin-server-password
+        username: admin-server-user2
+        password: admin-server-password2
         instance:
           metadata:
             user.name: instance-user
