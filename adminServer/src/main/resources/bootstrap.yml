@@ -1,0 +1,12 @@
+server:
+  port: 9001
+
+spring:
+  application:
+    name: adminServer
+  boot:
+    admin:
+      context-path: /
+  cloud:
+    config:
+      uri: http://localhost:9002

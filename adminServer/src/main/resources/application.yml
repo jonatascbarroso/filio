@@ -1,0 +1,14 @@
+spring:
+  security:
+    user:
+      name: admin-server-user
+      password: admin-server-password
+  boot:
+    admin:
+      client:
+        username: instance-user
+        password: instance-password
+
+logging:
+  level:
+    org.filio: DEBUG  

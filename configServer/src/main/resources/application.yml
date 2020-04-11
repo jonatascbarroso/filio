@@ -1,0 +1,19 @@
+spring:
+  security:
+    user:
+      name: instance-user
+      password: instance-password
+  boot:
+    admin:
+      client:
+        url: http://localhost:9001
+        username: admin-server-user
+        password: admin-server-password
+        instance:
+          metadata:
+            user.name: instance-user
+            user.password: instance-password
+
+logging:
+  level:
+    org.filio: DEBUG
