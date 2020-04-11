@@ -1,8 +1,8 @@
 spring:
   security:
     user:
-      name: admin-server-user2
-      password: admin-server-password2
+      name: admin-server-user
+      password: admin-server-password
   boot:
     admin:
       client:
