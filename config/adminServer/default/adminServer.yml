@@ -1,14 +1,3 @@
-spring:
-  security:
-    user:
-      name: admin-server-user
-      password: admin-server-password
-  boot:
-    admin:
-      client:
-        username: admin-client-user
-        password: admin-client-password
-
 logging:
   level:
     org.filio: DEBUG
