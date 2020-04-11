@@ -6,8 +6,8 @@ spring:
   boot:
     admin:
       client:
-        username: instance-user
-        password: instance-password
+        username: instance-user2
+        password: instance-password2
 
 logging:
   level:

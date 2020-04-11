@@ -1,18 +1,17 @@
 spring:
   security:
     user:
-      name: instance-user
-      password: instance-password
+      name: instance-user2
+      password: instance-password2
   boot:
     admin:
       client:
-        url: http://localhost:9001
         username: admin-server-user2
         password: admin-server-password2
         instance:
           metadata:
-            user.name: instance-user
-            user.password: instance-password
+            user.name: instance-user2
+            user.password: instance-password2
 
 logging:
   level:

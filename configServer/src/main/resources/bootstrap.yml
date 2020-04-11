@@ -4,14 +4,13 @@ server:
 spring:
   application:
     name: configServer
-  profiles:
-    active: native
   cloud:
     config:
+      uri: http://localhost:9002
       server:
         bootstrap: true
         git:
-          uri: http://github.com/jonatascbarroso/filio
+          uri: https://github.com/jonatascbarroso/filio
           searchPaths: 'config/{application}/{profile}'
 
 management:
