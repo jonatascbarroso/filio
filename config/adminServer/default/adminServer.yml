@@ -1,13 +1,13 @@
 spring:
   security:
     user:
-      name: admin-server-user
-      password: admin-server-password
+      name: admin
+      password: admin
   boot:
     admin:
       client:
-        username: instance-user2
-        password: instance-password2
+        username: instance
+        password: instance
 
 logging:
   level:
