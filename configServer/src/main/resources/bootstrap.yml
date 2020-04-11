@@ -4,9 +4,13 @@ server:
 spring:
   application:
     name: configServer
+  security:
+    user:
+      name: config-server-user
+      password: config-server-password
   cloud:
     config:
-      uri: http://localhost:9002
+      uri: http://config-server-user:config-server-password@localhost:9002
       server:
         bootstrap: true
         git:

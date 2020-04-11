@@ -9,4 +9,4 @@ spring:
       context-path: /
   cloud:
     config:
-      uri: http://localhost:9002
+      uri: http://config-server-user:config-server-password@localhost:9002
