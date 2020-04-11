@@ -11,9 +11,6 @@ spring:
   boot:
     admin:
       context-path: /
-      client:
-        username: admin-client-user
-        password: admin-client-password
   cloud:
     config:
       uri: http://config-server-user:config-server-password@localhost:9002

@@ -16,6 +16,13 @@ spring:
         git:
           uri: https://github.com/jonatascbarroso/filio
           searchPaths: 'config/{application}/{profile}'
+  boot:
+    admin:
+      client:
+        instance:
+          metadata:
+            user.name: ${spring.security.user.name}
+            user.password: ${spring.security.user.password}
 
 management:
   endpoints:
