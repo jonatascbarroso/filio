@@ -1,17 +1,26 @@
 spring:
+  application:
+    name: config
+  profiles:
+    active: native
+  cloud:
+    config:
+      server:
+        bootstrap: true
   boot:
     admin:
       client:
         url: http://localhost:9001
+        username: instance-user
+        password: instance-password
+        instance:
+          metadata:
+            user.name: instance-user
+            user.password: instance-user
 
-management:
-  security:
-    enabled: false
-  endpoints:
-    web:
-      exposure:
-        include: "*"
+server:
+    port: 9002
 
 logging:
   level:
-    org.filio: DEBUG  
+    org.filio: DEBUG

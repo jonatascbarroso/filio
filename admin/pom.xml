@@ -11,8 +11,11 @@
 	<groupId>org.filio</groupId>
 	<artifactId>admin</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>admin</name>
-	<description>The Administration Server is a management service of the all system.</description>
+	<name>Admin Server</name>
+	<description>
+		The Administration Server is a management
+		service of the all system.
+	</description>
 
 	<properties>
 		<java.version>11</java.version>
@@ -28,6 +31,11 @@
 		<dependency>
 			<groupId>de.codecentric</groupId>
 			<artifactId>spring-boot-admin-starter-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-server-ui-login</artifactId>
+			<version>1.5.7</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>

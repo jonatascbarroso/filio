@@ -1,9 +1,0 @@
-spring:
-  application:
-    name: admin
-  boot:
-    admin:
-      context-path: /
-  cloud:
-    config:
-      uri: ${CONFIG_SERVER_URL:http://localhost:9003}

@@ -1,8 +1,17 @@
 spring:
   application:
     name: admin
+  security:
+    user:
+      name: admin-user
+      password: admin-password
   boot:
     admin:
+      client:
+        instance:
+          metadata:
+            user.name: instance-user
+            user.password: instance-password
       context-path: /
 
 server:
