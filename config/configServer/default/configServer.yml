@@ -2,8 +2,6 @@ spring:
   boot:
     admin:
       client:
-        username: admin-server-user
-        password: admin-server-password
         instance:
           metadata:
             user.name: admin-client-user
