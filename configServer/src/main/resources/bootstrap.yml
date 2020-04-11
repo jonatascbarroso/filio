@@ -10,6 +10,9 @@ spring:
     config:
       server:
         bootstrap: true
+        git:
+          uri: http://github.com/jonatascbarroso/filio
+          searchPaths: 'config/{application}/{profile}'
 
 management:
   endpoints:
