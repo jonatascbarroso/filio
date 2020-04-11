@@ -61,7 +61,16 @@ Logs all important system events, e.g. API access, microservices communication, 
 
 ## Running
 
-### MinIO
+### Manually
+
+#### Spring Boot Apps
+
+```
+cd {app-dir}
+mvn clean package spring-boot:run
+```
+
+#### MinIO
 
 1. Download MinIO.
 2. Start MinIO server.
@@ -69,7 +78,7 @@ Logs all important system events, e.g. API access, microservices communication, 
 minio server .
 ```
 
-### MongoDB
+#### MongoDB
 
 1. Download and install MongoDB.
 2. Create a folder to put your data: `mongodb-data`.
@@ -102,12 +111,5 @@ mongo localhost:27017 -u "root" -p "root" --authenticationDatabase "admin"
 9. Reconnect with new user credentials.
 ```
 mongo localhost:27017/filio -u "user" -p "password"
-```
-
-### Administration Server and Service Discovery
-
-```
-cd admin
-mvn clean package spring-boot:run
 ```
 
