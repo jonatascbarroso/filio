@@ -20,6 +20,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .csrf()
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                .ignoringAntMatchers("/refresh", "/actuator/**");
+                .ignoringAntMatchers("/actuator/**");
     }
 }

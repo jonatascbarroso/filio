@@ -48,7 +48,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 .ignoringAntMatchers(
                     adminServerContextPath + "/instances",
-                    adminServerContextPath + "/refresh",
                     adminServerContextPath + "/actuator/**")
                 .and()
             .rememberMe()
