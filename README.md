@@ -70,6 +70,16 @@ cd {app-dir}
 mvn clean package spring-boot:run
 ```
 
+#### Cloud Config
+
+Config files could be found in `config\{application}\{profile}\` dir.
+
+To refresh app configurations, you need run the following command:
+
+```
+curl -X GET http://{user}:{password}@host:{port}/actuator/refresh
+```
+
 #### MinIO
 
 1. Download MinIO.
