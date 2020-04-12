@@ -1,4 +1,3 @@
 logging:
   level:
     org.filio: DEBUG
-    org.springframework: DEBUG
