@@ -1,0 +1,40 @@
+server:
+  port: 9003
+
+spring:
+  application:
+    name: discoveryServer
+  security:
+    user:
+      name: discovery-server-user
+      password: discovery-server-password
+  cloud:
+    config:
+      uri: http://config-server-user:config-server-password@localhost:9002
+  boot:
+    admin:
+      client:
+        instance:
+          metadata:
+            user.name: ${spring.security.user.name}
+            user.password: ${spring.security.user.password}
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    healthcheck:
+      enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
