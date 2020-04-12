@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
-@RequestMapping(value="/orders")
+@RequestMapping(value="/")
 @Slf4j
-public class OrderManagerController {
+public class Controller {
 
     @Value("${eureka.instance.instanceId}")
     private String instanceId;
 
     @GetMapping
-    public ResponseEntity<String> getInstanceId() {
-        log.debug("Returning service instance id.");
+    public ResponseEntity<String> get() {
+        log.debug("Returning service instance.");
         String instanceId = new String("Service Instance: " + this.instanceId);
         return ResponseEntity.ok().body(instanceId);
     }
