@@ -12,43 +12,47 @@ In the end, users use a service to get this processed file.
 
 ### Components
 
-#### Admin Server
-
-The Administration Server is a management service of the all system.
-
-#### Config Server
-
-The Config Server is responsible for managing externalized configuration in a distributed system.
-
-
-
 #### Frontend App
 
 Graphical interface used to send and receive files to the system.
 
-#### Gateway
+#### Web Server & Reverse Proxy
 
-Component to manage and protect the public API of the backend using load balancer and circuit breaker.
 
-#### File Transfer Service
 
-Component with methods to upload, download, check, and get info of the managed files.
+#### Gateways
 
-#### Incoming Topic
+Components to manage and protect the public API of the backend.
+* **Metadata Gateway**
+* **File Tranfer Gateway**
 
-Message repository to indicate to system process an uploaded file.
+#### Services
+
+* **Order Manager**
+* **File Manager**
+* **Processor**
+* **Validator**
+* **Notificator**
+
+#### Message Topics
+
+* **Processing**
+* **Validation**
+* **Notification**
+
+#### Utils Services
+
+* **Admin Server** is a management service of the all system.
+* **Config Server** is responsible for managing externalized configuration in a distributed system.
+* **Service Discovery**
 
 #### Object Storage
 
 Container to stock temporary and processed files by the system.
 
-#### Processor Service
+#### Webhook
 
-Topic consumer that processes each message in the Incoming Topic.
 
-#### Logging
-
-Logs all important system events, e.g. API access, microservices communication, errors, etc.
 
 ### Technologies
 
