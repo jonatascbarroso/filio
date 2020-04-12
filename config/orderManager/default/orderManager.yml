@@ -1,0 +1,16 @@
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:9001
+        username: admin-server-user
+        password: admin-server-password
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://discovery-server-user:discovery-server-password@localhost:9003/eureka/
+
+logging:
+  level:
+    org.filio: DEBUG
