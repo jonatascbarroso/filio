@@ -44,7 +44,7 @@ Components to manage and protect the public API of the backend.
 
 * **Admin Server** is a management service of the all system.
 * **Config Server** is responsible for managing externalized configuration in a distributed system.
-* **Service Discovery**
+* **Discovery Server** is a registration and discovery service of the system microservices.
 
 #### Object Storage
 
