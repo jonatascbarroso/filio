@@ -12,6 +12,16 @@ In the end, users use a service to get this processed file.
 
 ### Components
 
+#### Admin Server
+
+The Administration Server is a management service of the all system.
+
+#### Config Server
+
+The Config Server is responsible for managing externalized configuration in a distributed system.
+
+
+
 #### Frontend App
 
 Graphical interface used to send and receive files to the system.
@@ -19,10 +29,6 @@ Graphical interface used to send and receive files to the system.
 #### Gateway
 
 Component to manage and protect the public API of the backend using load balancer and circuit breaker.
-
-#### Admin Server
-
-Discovery and management service of the system microservices.
 
 #### File Transfer Service
 
@@ -55,37 +61,38 @@ Logs all important system events, e.g. API access, microservices communication, 
 ### Prerequisites
 
 * Maven 3
-* Java 8
+* Java 11
 * MinIO
 * MongoDB
 
 ## Running
 
-### Manually
+### Manually and Locally
 
-#### Spring Boot Apps
+#### Spring Boot Applications (SBA)
 
-```
-cd {app-dir}
-mvn clean package spring-boot:run
+```sh
+$ cd {app-dir}
+$ mvn clean package spring-boot:run
 ```
 
 #### Cloud Config
 
-Config files could be found in `config\{application}\{profile}\` dir.
+It is necessary to run the Config Server first so that other applications can obtain the updated settings.
+Config files are in `{filio-repository}\config\{application}\{profile}\` folder.
+To refresh app configurations, you need to run the following command:
 
-To refresh app configurations, you need run the following command:
-
-```
-curl -X GET http://{user}:{password}@host:{port}/actuator/refresh
+```sh
+$ curl -X GET http://{user}:{password}@localhost:{port}/actuator/refresh
 ```
 
 #### MinIO
 
 1. Download MinIO.
 2. Start MinIO server.
-```
-minio server .
+
+```sh
+$ minio server .
 ```
 
 #### MongoDB
@@ -93,33 +100,46 @@ minio server .
 1. Download and install MongoDB.
 2. Create a folder to put your data: `mongodb-data`.
 3. Start MongoDB server.
+
+```sh
+$ mongod --port 27017 --dbpath ./mongodb-data
 ```
-mongod --port 27017 --dbpath ./mongodb-data
-```
+
 4. Connect to server.
+
+```sh
+$ mongo localhost:27017
 ```
-mongo localhost:27017
-```
+
 5. Create an administrator user.
+
 ```
 > use admin
 > db.createUser({user: "root", pwd: "root", roles:["root"]})
 ```
-6. Restart MongoDB server and enable authentication with --auth flag.
+
+6. Restart MongoDB server and enable authentication with `--auth` flag.
+
+```sh
+$ mongod --auth --port 27017 --dbpath ./mongodb-data
 ```
-mongod --auth --port 27017 --dbpath ./mongodb-data
-```
+
 7. Connect to it as administrator.
+
+```sh
+$ mongo localhost:27017 -u "root" -p "root" --authenticationDatabase "admin"
 ```
-mongo localhost:27017 -u "root" -p "root" --authenticationDatabase "admin"
-```
+
 8. Create a app user to `filio` db.
+
 ```
 > use filio
 > db.createUser({user: "user", pwd: "password", roles:["dbOwner"]})
 ```
+
 9. Reconnect with new user credentials.
-```
-mongo localhost:27017/filio -u "user" -p "password"
+
+```sh
+$ mongo localhost:27017/filio -u "user" -p "password"
 ```
 
