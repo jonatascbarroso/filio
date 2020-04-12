@@ -40,7 +40,7 @@ Components to manage and protect the public API of the backend.
 * **Validation**
 * **Notification**
 
-#### Utils Services
+#### Util Services
 
 * **Admin Server** is a management service of the all system.
 * **Config Server** is responsible for managing externalized configuration in a distributed system.
